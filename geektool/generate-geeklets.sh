@@ -8,7 +8,7 @@ GEEKTOOLRUN=$(cat <<END
 <plist version="1.0">
 <dict>
 	<key>Command</key>
-        <string>$ABSPATH/run.sh</string>
+        <string>$ABSPATH/coverfy.applescript</string>
 	<key>DisplayStatusImage</key>
 	<false/>
 	<key>DropShadow</key>
