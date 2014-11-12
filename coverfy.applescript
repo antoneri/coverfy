@@ -19,7 +19,7 @@ set posixBlank to the quoted form of POSIX path of blankFile
 set posixOutput to the quoted form of POSIX path of outputFile
 set posixSpotify to the quoted form of POSIX path of spotifyOutput
 
-set displayArt to "blank"
+set displayArt to false
 
 tell application "System Events"
     if exists process "Spotify" then
@@ -31,7 +31,7 @@ tell application "System Events"
                 set fileRef to (open for access spotifyOutput with write permission)
                 write artworkData to fileRef
                 close access fileref
-                set displayArt to "spotify"
+                set displayArt to true
             on error message
                 log message
             end try
@@ -39,7 +39,7 @@ tell application "System Events"
     end if -- exists process
 end tell -- System Events
 
-if displayArt is "spotify" then
+if displayArt is true then
     do shell script "ditto -rsrc " & posixSpotify & space & posixOutput
 else
     do shell script "ditto -rsrc " & posixBlank & space & posixOutput
