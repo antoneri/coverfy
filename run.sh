@@ -1,2 +1,4 @@
 #!/usr/bin/env sh
-osascript `pwd`/coverfy.applescript > /dev/null 2>&1
+SCRIPT=$(stat -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+osascript $SCRIPTPATH/coverfy.applescript # > /dev/null 2>&1
