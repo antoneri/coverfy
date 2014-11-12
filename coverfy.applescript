@@ -1,3 +1,4 @@
+#!/usr/bin/osascript
 (*
  * Based on "Spotify info on the Desktop via NerdTool" by drdrang
  * http://www.leancrew.com/all-this/2011/07/spotify-info-on-the-desktop-via-nerdtool/
