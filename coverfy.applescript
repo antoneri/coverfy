@@ -8,11 +8,11 @@
  *)
 
 tell application "Finder"
-    set outputDir to (container of (path to me)) as text & "output:"
+	set outputDir to ((container of (path to me)) as text) & "output:"
 end tell
 
 set blankFile to outputDir & "blank.tiff"
-set outputFile to outputdir & "output.tiff"
+set outputFile to outputDir & "output.tiff"
 set spotifyOutput to outputDir & "spotify.tiff"
 
 set posixBlank to the quoted form of POSIX path of blankFile
@@ -22,26 +22,26 @@ set posixSpotify to the quoted form of POSIX path of spotifyOutput
 set displayArt to false
 
 tell application "System Events"
-    if exists process "Spotify" then
-        tell application "Spotify"
-            set artworkData to artwork of current track
-        end tell -- Spotify
-        tell current application
-            try
-                set fileRef to (open for access spotifyOutput with write permission)
-                write artworkData to fileRef
-                close access fileref
-                set displayArt to true
-            on error message
-                log message
-            end try
-        end tell -- current application
-    end if -- exists process
+	if exists process "Spotify" then
+		tell application "Spotify"
+			set artworkData to artwork of current track
+		end tell -- Spotify
+		tell current application
+			try
+				set fileRef to (open for access spotifyOutput with write permission)
+				write artworkData to fileRef
+				close access fileRef
+				set displayArt to true
+			on error message
+				log message
+			end try
+		end tell -- current application
+	end if -- exists process
 end tell -- System Events
 
 if displayArt is true then
-    do shell script "ditto -rsrc " & posixSpotify & space & posixOutput
+	do shell script "ditto -rsrc " & posixSpotify & space & posixOutput
 else
-    do shell script "ditto -rsrc " & posixBlank & space & posixOutput
+	do shell script "ditto -rsrc " & posixBlank & space & posixOutput
 end if
 
