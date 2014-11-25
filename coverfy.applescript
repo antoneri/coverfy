@@ -20,10 +20,12 @@ set posixOutput to the quoted form of POSIX path of outputFile
 set posixSpotify to the quoted form of POSIX path of spotifyOutput
 
 set displayArt to false
+set playerState to false
 
 tell application "System Events"
 	if exists process "Spotify" then
 		tell application "Spotify"
+			set playerState to player state as string
 			set artworkData to artwork of current track
 		end tell -- Spotify
 		tell current application
@@ -39,7 +41,7 @@ tell application "System Events"
 	end if -- exists process
 end tell -- System Events
 
-if displayArt is true then
+if displayArt is true and playerState is "playing" then
 	do shell script "ditto -rsrc " & posixSpotify & space & posixOutput
 else
 	do shell script "ditto -rsrc " & posixBlank & space & posixOutput
