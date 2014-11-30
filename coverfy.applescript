@@ -7,17 +7,17 @@
  * http://www.github.com/antoneri/coverfy
  *)
 
+set composite to "/usr/local/bin/composite -gravity center"
+
 tell application "Finder"
 	set outputDir to ((container of (path to me)) as text) & "output:"
 end tell
 
-set blankFile to outputDir & "blank.tiff"
-set outputFile to outputDir & "output.tiff"
-set spotifyOutput to outputDir & "spotify.tiff"
+set artworkFile to outputDir & "spotify.tiff"
 
-set posixBlank to the quoted form of POSIX path of blankFile
-set posixOutput to the quoted form of POSIX path of outputFile
-set posixSpotify to the quoted form of POSIX path of spotifyOutput
+set pArtworkFile to the quoted form of POSIX path of artworkFile
+set blankFile to the quoted form of POSIX path of (outputDir & "blank.tiff")
+set outputFile to the quoted form of POSIX path of (outputDir & "output.tiff")
 set dropShadow to the quoted form of POSIX path of (outputDir & "shadow.tiff")
 
 set displayArt to false
@@ -31,7 +31,7 @@ tell application "System Events"
 		end tell -- Spotify
 		tell current application
 			try
-				set fileRef to (open for access spotifyOutput with write permission)
+				set fileRef to (open for access artworkFile with write permission)
 				write artworkData to fileRef
 				close access fileRef
 				set displayArt to true
@@ -43,8 +43,8 @@ tell application "System Events"
 end tell -- System Events
 
 if displayArt is true and playerState is "playing" then
-	do shell script "/usr/local/bin/composite -gravity center " & posixSpotify & space & dropShadow & space & posixOutput
+	do shell script composite & space & pArtworkFile & space & dropShadow & space & outputFile
 else
-	do shell script "ditto -rsrc " & posixBlank & space & posixOutput
+	do shell script "ditto -rsrc " & blankFile & space & outputFile
 end if
 
