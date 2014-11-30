@@ -7,23 +7,23 @@ GEEKTOOLRUN=$(cat <<END
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Command</key>
+    <key>Command</key>
         <string>$ABSPATH/coverfy.applescript</string>
-	<key>DisplayStatusImage</key>
+    <key>DisplayStatusImage</key>
 	<false/>
-	<key>DropShadow</key>
+    <key>DropShadow</key>
 	<false/>
-	<key>GeekletFrame</key>
+    <key>GeekletFrame</key>
 	<string>{{50, 50}, {100, 100}}</string>
-	<key>HasShadow</key>
+    <key>HasShadow</key>
 	<false/>
-	<key>Identifier</key>
+    <key>Identifier</key>
 	<string>org.tynsoe.geeklet.shell</string>
-	<key>Name</key>
+    <key>Name</key>
 	<string>Coverfy</string>
-	<key>RefreshInterval</key>
+    <key>RefreshInterval</key>
 	<integer>3</integer>
-	<key>SetLocale</key>
+    <key>SetLocale</key>
 	<true/>
 </dict>
 </plist>
@@ -36,19 +36,19 @@ GEEKTOOLIMAGE=$(cat <<END
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>GeekletFrame</key>
+    <key>GeekletFrame</key>
 	<string>{{0, 650}, {400, 400}}</string>
-	<key>HasShadow</key>
+    <key>HasShadow</key>
 	<false/>
-	<key>Identifier</key>
+    <key>Identifier</key>
 	<string>org.tynsoe.geeklet.image</string>
-	<key>ImageURL</key>
+    <key>ImageURL</key>
 	<string>file://localhost$ABSPATH/output/output.tiff</string>
-	<key>Name</key>
+    <key>Name</key>
 	<string>Coverfy</string>
-	<key>Opacity</key>
+    <key>Opacity</key>
 	<real>1</real>
-	<key>RefreshInterval</key>
+    <key>RefreshInterval</key>
 	<integer>3</integer>
 </dict>
 </plist>
