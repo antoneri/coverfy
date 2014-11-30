@@ -18,6 +18,7 @@ set spotifyOutput to outputDir & "spotify.tiff"
 set posixBlank to the quoted form of POSIX path of blankFile
 set posixOutput to the quoted form of POSIX path of outputFile
 set posixSpotify to the quoted form of POSIX path of spotifyOutput
+set dropShadow to the quoted form of POSIX path of (outputDir & "shadow.tiff")
 
 set displayArt to false
 set playerState to false
@@ -42,7 +43,7 @@ tell application "System Events"
 end tell -- System Events
 
 if displayArt is true and playerState is "playing" then
-	do shell script "ditto -rsrc " & posixSpotify & space & posixOutput
+	do shell script "/usr/local/bin/composite -gravity center " & posixSpotify & space & dropShadow & space & posixOutput
 else
 	do shell script "ditto -rsrc " & posixBlank & space & posixOutput
 end if

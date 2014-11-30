@@ -37,7 +37,7 @@ GEEKTOOLIMAGE=$(cat <<END
 <plist version="1.0">
 <dict>
 	<key>GeekletFrame</key>
-	<string>{{70, 690}, {300, 300}}</string>
+	<string>{{0, 650}, {400, 400}}</string>
 	<key>HasShadow</key>
 	<false/>
 	<key>Identifier</key>
