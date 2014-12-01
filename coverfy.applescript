@@ -7,6 +7,8 @@
  * http://www.github.com/antoneri/coverfy
  *)
 
+set doDropShadow to true -- Set this to 'false' if you don't have ImageMagick
+
 set composite to "/usr/local/bin/composite -gravity center"
 
 tell application "Finder"
@@ -43,7 +45,11 @@ tell application "System Events"
 end tell -- System Events
 
 if displayArt is true and playerState is "playing" then
-	do shell script composite & space & pArtworkFile & space & dropShadow & space & outputFile
+	if doDropShadow is true
+		do shell script composite & space & pArtworkFile & space & dropShadow & space & outputFile
+	else
+		do shell script "ditto -rsrc " & pArtworkFile & space & outputFile
+	end if
 else
 	do shell script "ditto -rsrc " & blankFile & space & outputFile
 end if
